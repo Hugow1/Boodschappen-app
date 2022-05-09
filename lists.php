@@ -19,9 +19,9 @@ $errors = "";
 
 //Add new list if submit button is clicked
 if (isset($_POST['newList'])) {
-    if (empty($_POST['newItem'])) {
+    if (empty($_POST['newList'])) {
         $errors = "Je moet een item invullen.";
-    }else{
+    } else {
     addList($_POST['newList'], $_SESSION['id']);
     }
 }

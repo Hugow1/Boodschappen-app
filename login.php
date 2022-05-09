@@ -21,14 +21,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Voer een gebruikersnaam in.";
     } else{
         $username = trim($_POST["username"]);
     }
 
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Voer een wachtwoord in.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -68,12 +68,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: index.php");
                         } else{
                             // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
+                            $login_err = "Ongeldige gebruikersnaam of wachtwoord.";
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
+                    $login_err = "Ongeldige gebruikersnaam of wachtwoord.";
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
