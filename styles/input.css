@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .hoverStyles {
+    @apply transition duration-150 ease-out cursor-pointer hover:shadow hover:scale-105;
+  }
+}
+@font-face {
+  font-family: raleway;
+  src: url(../fonts/Raleway-VariableFont_wght.ttf) format("truetype");
+}
