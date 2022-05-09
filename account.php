@@ -13,6 +13,8 @@ require_once './functions.php';
     <link rel="stylesheet" href="styles/output.css">
     <script src="./scripts/functions.js"></script>
     <title>Account instellingen</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <header id="header" class="flex flex-col w-full py-5 text-3xl px-7 ">

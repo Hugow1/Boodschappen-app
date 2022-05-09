@@ -9,32 +9,19 @@ define('DB_NAME', 'listItems');
 //Setup db connection
 $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-//Get all items from db
-// function getLists()
-// {
-// global $db;
-// $boodschappen = mysqli_query($db, "SELECT * FROM `list` WHERE `status` = 0 AND `user_id` = 1");
-// $doneItems = mysqli_query($db, "SELECT * FROM `list` WHERE `status` = 1 AND `user_id` = 1");
-
-// return $boodschappen;
-// }
-
 //Add new item to db
 function addItem($item, $user_id)
 {
-    if (empty($_POST['newItem'])) {
-        $errors = "You must fill in an item.";
-    }else{
-        global $db;
-        $item = $_POST['newItem'];
-        $sql = "INSERT INTO `list`(`item`, `status`, `user_id`) VALUES ('$item', '0', $user_id)";
-        mysqli_query($db, $sql);
-        header('location: index.php');
-}
+    global $db;
+    $item = $_POST['newItem'];
+    $sql = "INSERT INTO `list`(`item`, `status`, `user_id`) VALUES ('$item', '0', $user_id)";
+    mysqli_query($db, $sql);
+    header('location: index.php');
 }
 
 //Update item status in the db
-function updateItemStatus($id) {
+function updateItemStatus($id)
+{
     global $db;
     $id = $_GET['update'];
     $sql = "UPDATE list SET status = '1' WHERE id = '$id'";
@@ -43,7 +30,8 @@ function updateItemStatus($id) {
 }
 
 //Add shortlist items to the main list
-function addListItems($list_id, $user_id) {
+function addListItems($list_id, $user_id)
+{
     global $db;
     $list_id = $_GET['addedList'];
     $items = mysqli_query($db, "SELECT * FROM `lists` WHERE `id` = $list_id AND `user_id` = $user_id");

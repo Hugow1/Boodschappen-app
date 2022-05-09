@@ -38,6 +38,7 @@ function showList(listId) {
 
   if (list.classList.contains("hidden")) {
     list.classList.remove("hidden");
+    list.classList.add("flex");
     listArrow.classList.add("rotate-180");
   } else {
     list.classList.add("hidden");

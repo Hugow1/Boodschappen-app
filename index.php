@@ -14,20 +14,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 $boodschappen = mysqli_query($db, "SELECT * FROM `list` WHERE `status` = 0 AND `user_id` = $_SESSION[id]");
 $doneItems = mysqli_query($db, "SELECT * FROM `list` WHERE `status` = 1 AND `user_id` = $_SESSION[id]");
 
-
-$itemsList = mysqli_query($db, "SELECT * FROM `lists` WHERE `id` = 1 AND `user_id` = 1");
-foreach ($itemsList as $item) {
-    $items = $item['items'];
-    $newItems = unserialize($items);
-    // var_dump($newItems);
-}
-
 // initialize errors variable
 $errors = "";
 
 // insert an item if submit button is clicked
 if (isset($_POST['newItem'])) {
+    if (empty($_POST['newItem'])) {
+        $errors = "Je moet een item invullen.";
+    }else{
     addItem($_POST['newItem'], $_SESSION['id']);
+    }
 }
 
 //update an item if it is clicked
@@ -52,6 +48,8 @@ if (isset($_GET['addedList'])) {
     <link rel="stylesheet" href="styles/output.css">
     <script src="./scripts/functions.js"></script>
     <title>Je lijst</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
@@ -77,6 +75,9 @@ if (isset($_GET['addedList'])) {
                 </svg>
                 Voeg nieuw item toe
             </button>
+            <?php if (isset($errors)) { ?>
+                <p><?php echo $errors; ?></p>
+            <?php } ?>
         </div>
 
         <!-- todo section -->
@@ -89,18 +90,17 @@ if (isset($_GET['addedList'])) {
         <?php } ?>
 
         <!-- done section -->
-
-            <?php
-                foreach ($doneItems as $boodschap) { ?>
-                    <div class="flex items-center w-full px-2 py-2 mb-5 bg-white rounded-full shadow opacity-50">
-                        <span class="w-7 h-7 bg-[#f9f9fd] rounded-full mr-2 ml-2 shadow-inner text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </span>
-                        <span class="ml-2 line-through"><?php echo $boodschap['item'] ?></span>
-                    </div>
-            <?php } ?>
+        <?php
+            foreach ($doneItems as $boodschap) { ?>
+                <div class="flex items-center w-full px-2 py-2 mb-5 bg-white rounded-full shadow opacity-50">
+                    <span class="w-7 h-7 bg-[#f9f9fd] rounded-full mr-2 ml-2 shadow-inner text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </span>
+                    <span class="ml-2 line-through"><?php echo $boodschap['item'] ?></span>
+                </div>
+        <?php } ?>
 
     </main>
     <footer id="footer" class="fixed bottom-0 flex items-center justify-end w-full ">
@@ -121,9 +121,6 @@ if (isset($_GET['addedList'])) {
         </div>
         <div class="flex w-full mt-5 mb-8 mx-7">
             <form action="index.php" method="post">
-            <?php if (isset($errors)) { ?>
-                <p><?php echo $errors; ?></p>
-            <?php } ?>
                 <input type="text" name="newItem" id="newItem" placeholder="Typ hier je item" maxlength="55"
                 class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 placeholder:pl-2 ">
                 <input type="submit" name="submit" value="Add" class="hidden w-0 px-3 py-1 text-sm rounded-md">

@@ -37,12 +37,16 @@ if (isset($_GET['deleteItem'])) {
 
 // Add an item to the list
 if (isset($_POST['newItem'])) {
+    if (empty($_POST['newItem'])) {
+        $errors = "Je moet een item invullen.";
+    } else {
     $item = $_POST['newItem'];
     $items[] = $item;
     $newItems = serialize($items);
     $sql = "UPDATE `lists` SET `items` = '$newItems' WHERE `id` = $listID";
     mysqli_query($db, $sql);
     header('location: editList.php?editList=' . $listID);
+    }
 }
 
 
@@ -56,7 +60,9 @@ if (isset($_POST['newItem'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/output.css">
     <script src="./scripts/functions.js"></script>
-    <title>List edit</title>
+    <title>Bewerk je lijst</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
@@ -92,6 +98,9 @@ if (isset($_POST['newItem'])) {
                 </svg>
                 Voeg nieuw item toe
             </button>
+            <?php if (isset($errors)) { ?>
+                <p><?php echo $errors; ?></p>
+            <?php } ?>
         </div>
 
         <!-- List items -->

@@ -83,6 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location: login.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
+                echo mysqli_error($db);
             }
 
             // Close statement
@@ -101,9 +102,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registreer</title>
     <link rel="stylesheet" href="styles/output.css">
     <script src="./scripts/functions.js"></script>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">

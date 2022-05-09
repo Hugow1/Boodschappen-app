@@ -2,10 +2,10 @@
 
 require_once './functions.php';
 
-// Initialize the session
+//Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
+//Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -14,12 +14,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 //Get lists by user id
 $lists = mysqli_query($db, "SELECT * FROM `lists` WHERE `user_id` = $_SESSION[id]");
 
-// initialize errors variable
+//initialize errors variable
 $errors = "";
 
-// Add new list if submit button is clicked
+//Add new list if submit button is clicked
 if (isset($_POST['newList'])) {
+    if (empty($_POST['newItem'])) {
+        $errors = "Je moet een item invullen.";
+    }else{
     addList($_POST['newList'], $_SESSION['id']);
+    }
 }
 
 //Delete list if delete button is clicked
@@ -37,7 +41,9 @@ if (isset($_GET['deleteList'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/output.css">
     <script src="./scripts/functions.js"></script>
-    <title>Lists overview</title>
+    <title>Short lists</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <div id="overlay" onClick="closeListModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
@@ -63,6 +69,9 @@ if (isset($_GET['deleteList'])) {
                 </svg>
                 Voeg nieuwe lijst toe
             </button>
+            <?php if (isset($errors)) { ?>
+                <p><?php echo $errors; ?></p>
+            <?php } ?>
         </div>
 
         <!-- Lists -->
@@ -95,7 +104,7 @@ if (isset($_GET['deleteList'])) {
                     } ?>
                     <div class="flex items-center justify-between w-full">
                         <a href="index.php?addedList=<?php echo $list['id']?>">
-                            <button class="flex items-center justify-center px-5 py-1 text-white rounded-full bg-primary">Voeg toe aan bootschappen lijst</button>
+                            <button class="flex items-center justify-center px-5 py-1 text-white rounded-full bg-primary">Zet op boodschappen lijst</button>
                         </a>
                         <div class="flex items-center text-primary">
                             <a href="editList.php?editList=<?php echo $list['id']?>">
@@ -119,15 +128,17 @@ if (isset($_GET['deleteList'])) {
         <?php } ?>
     </main>
     <!-- Add list modal -->
-    <div id="addListModal" class="fixed bottom-0 bg-[#f9f9fd] w-full rounded-t-xl hidden z-20">
-        <div class="flex mt-5 px-7">
-            <span class="text-xl font-semibold">Voeg item toe</span>
+    <div id="addListModal" class="fixed bottom-0 bg-[#f9f9fd] w-full rounded-t-xl hidden z-20 flex-col">
+        <div class="flex items-center justify-between mt-5 px-7">
+            <span class="ml-4 text-xl font-semibold">Voeg item toe</span>
+            <span class="mr-5 text-primary">
+                <svg onClick="closeListModal()" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </span>
         </div>
         <div class="flex w-full mt-5 mb-8 mx-7">
             <form action="lists.php" method="post">
-            <?php if (isset($errors)) { ?>
-                <p><?php echo $errors; ?></p>
-            <?php } ?>
                 <input type="text" name="newList" id="newList" placeholder="Typ hier de naam van je lijst" maxlength="55"
                 class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 placeholder:pl-2">
                 <input type="submit" name="submit" value="Add" class="hidden w-0 px-3 py-1 text-sm rounded-md">

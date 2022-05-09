@@ -1,15 +1,16 @@
 <?php
+
+// Include config file
+require_once "./functions.php";
+
 // Initialize the session
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location: index.php");
     exit;
 }
-
-// Include config file
-require_once "./functions.php";
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -97,6 +98,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Login</title>
     <link rel="stylesheet" href="styles/output.css">
     <script src="./scripts/functions.js"></script>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
