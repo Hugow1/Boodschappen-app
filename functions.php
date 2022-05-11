@@ -71,3 +71,9 @@ function deleteList($listID, $user_id)
     mysqli_query($db, $sql);
     header('location: lists.php');
 }
+
+//add query parameters to the url to fix caching issues
+function auto_version($file) {
+    $mtime = filemtime($_SERVER['DOCUMENT_ROOT'] . $file);
+    return sprintf("%s?v=%d", $file, $mtime);
+}
