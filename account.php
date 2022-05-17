@@ -12,9 +12,16 @@ require_once './functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo '<link rel="stylesheet" href="' . auto_version('/styles/output.css') . '" type="text/css">'; ?>
     <?php echo '<script src="' . auto_version('/scripts/functions.js') . '"></script>'; ?>
+    <link rel="manifest" href="/manifest.json">
     <title>Account instellingen</title>
     <link rel="icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <script type="module">
+        import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+        const el = document.createElement('pwa-update');
+        document.body.appendChild(el);
+    </script>
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <header id="header" class="flex flex-col w-full py-5 text-3xl px-7 ">

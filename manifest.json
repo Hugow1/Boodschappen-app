@@ -1,0 +1,25 @@
+{
+  "background_color": "#f9f9fd",
+  "description": "Boodschappen lijsten makkelijk gemaakt",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Lijs",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "Lijs",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "images/favicon.ico"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "shortcuts": []
+}

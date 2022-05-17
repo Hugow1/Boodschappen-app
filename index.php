@@ -47,9 +47,15 @@ if (isset($_GET['addedList'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo '<link rel="stylesheet" href="' . auto_version('/styles/output.css') . '" type="text/css">'; ?>
     <?php echo '<script src="' . auto_version('/scripts/functions.js') . '"></script>'; ?>
+    <link rel="manifest" href="/manifest.json">
     <title>Je lijst</title>
     <link rel="icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <script type="module">
+        import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+        const el = document.createElement('pwa-update');
+        document.body.appendChild(el);
+    </script>
 </head>
 <body class="bg-[#f9f9fd] max-h-screen">
     <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
