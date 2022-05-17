@@ -107,9 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         document.body.appendChild(el);
     </script>
 </head>
-<body class="bg-[#f9f9fd] max-h-screen">
-    <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
-    </div>
+<body class="">
     <header id="header" class="flex items-center justify-between w-full py-5 mt-10 text-3xl px-7">
         <p class="font-semibold">Inloggen</p>
     </header>
@@ -129,14 +127,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="flex flex-col">
                 <label class="mb-2 ml-2 text-xl font-bold">Wachtwoord</label>
-                <input type="password" name="password" placeholder="Typ hier je wachtwoord in" class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 placeholder:pl-2 <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <input type="password" name="password" placeholder="Typ hier je wachtwoord in" class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div class="fixed bottom-0 flex items-center justify-between w-full font-semibold">
+            <div class="fixed bottom-0 flex items-center justify-between w-full max-w-md font-semibold">
                 <a href="register.php" class="flex justify-center w-1/3 py-5 text-xl text-primary">Registreer</a>
                 <input type="submit" class="flex justify-center w-2/3 py-5 text-xl text-white rounded-tl-full bg-primary" value="Login">
             </div>
         </form>
+    </div>
+    <div class="flex flex-col px-7">
+        <h3 class="mt-10 text-xl">Handleiding:</h3>
+        <ol class="list-decimal list-inside">
+            <li>Voeg de app toe aan je homescreen.</li>
+            <li>Klik op de app in je homescreen.</li>
+            <li>Log in of maak een gratis account aan.</li>
+            <li>Zet items in je boodschappen lijst.</li>
+            <li>Maak eventueel short lists aan voor vaste lijsten die je vaak nodig hebt.</li>
+            <li>Haal je boodschappen en vergeet nooit meer iets met de hulp van <span class="">Lijs. :)</span></li>
+        </ol>
     </div>
 </body>
 </html>

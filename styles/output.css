@@ -573,6 +573,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: 0px;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -648,10 +652,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mb-8 {
   margin-bottom: 2rem;
-}
-
-.-mt-12 {
-  margin-top: -3rem;
 }
 
 .ml-4 {
@@ -830,10 +830,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 1.5rem;
 }
 
-.w-\[350px\] {
-  width: 350px;
-}
-
 .w-0 {
   width: 0px;
 }
@@ -846,12 +842,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 1.25rem;
 }
 
+.w-\[350px\] {
+  width: 350px;
+}
+
 .w-1\/3 {
   width: 33.333333%;
 }
 
 .w-2\/3 {
   width: 66.666667%;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .flex-shrink {
@@ -1063,6 +1067,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .list-outside {
   list-style-position: outside;
+}
+
+.list-decimal {
+  list-style-type: decimal;
 }
 
 .appearance-none {
@@ -1342,16 +1350,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-items: stretch;
 }
 
-.space-y-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
@@ -1748,11 +1756,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(184 184 214 / var(--tw-border-opacity));
 }
 
-.bg-\[\#f9f9fd\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 249 253 / var(--tw-bg-opacity));
-}
-
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: rgb(184 184 214 / var(--tw-bg-opacity));
@@ -1766,6 +1769,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f9f9fd\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 249 253 / var(--tw-bg-opacity));
 }
 
 .bg-\[rgb\(255\2c 0\2c 0\)\] {
@@ -1965,16 +1973,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.25rem;
 }
 
-.pt-1 {
-  padding-top: 0.25rem;
-}
-
-.pl-5 {
-  padding-left: 1.25rem;
-}
-
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
 }
 
 .pb-0 {
@@ -2524,6 +2528,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: raleway;
 
   src: url(../fonts/Raleway-VariableFont_wght.ttf) format("truetype");
+}
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 28rem;
+  flex-direction: column;
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 249 253 / var(--tw-bg-opacity));
 }
 
 .placeholder\:pl-2::-moz-placeholder {

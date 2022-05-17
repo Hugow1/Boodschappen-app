@@ -74,9 +74,13 @@ function deleteList($listID, $user_id)
     header('location: lists.php');
 }
 
-//add query parameters to the url to fix caching issues
+//add query parameters to the url to fix caching issues for non development environments
 function auto_version($file) {
-    $file = "/" . $file;
-    $mtime = filemtime($_SERVER['DOCUMENT_ROOT'] . $file);
-    return sprintf("%s?v=%d", $file, $mtime);
+    if ($_ENV['environment'] == 'development') {
+        return $file;
+    } else {
+        $file = "/" . $file;
+        $mtime = filemtime($_SERVER['DOCUMENT_ROOT'] . $file);
+        return sprintf("%s?v=%d", $file, $mtime);
+    }
 }

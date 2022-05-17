@@ -114,9 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         document.body.appendChild(el);
     </script>
 </head>
-<body class="bg-[#f9f9fd] max-h-screen">
-    <div id="overlay" onClick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
-    </div>
+<body class="">
     <header id="header" class="flex items-center justify-between w-full py-5 mt-10 text-3xl px-7">
         <p class="font-semibold">Registreren</p>
     </header>
@@ -137,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" name="confirm_password" placeholder="Typ hier nog een keer je wachtwoord in" class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 placeholder:pl-2 <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
-            <div class="fixed bottom-0 flex items-center justify-between w-full font-semibold">
+            <div class="fixed bottom-0 flex items-center justify-between w-full max-w-md font-semibold">
                 <a href="login.php" class="flex justify-center w-1/3 py-5 text-xl text-primary">Login</a>
                 <input type="submit" class="flex justify-center w-2/3 py-5 text-xl text-white rounded-tl-full bg-primary" value="Registreer">
             </div>

@@ -11,3 +11,7 @@
   font-family: raleway;
   src: url(../fonts/Raleway-VariableFont_wght.ttf) format("truetype");
 }
+
+body {
+    @apply bg-[#f9f9fd] max-h-screen max-w-md h-screen mx-auto flex flex-col;
+}

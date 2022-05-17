@@ -51,8 +51,8 @@ if (isset($_GET['deleteList'])) {
         document.body.appendChild(el);
     </script>
 </head>
-<body class="bg-[#f9f9fd] max-h-screen">
-    <div id="overlay" onClick="closeListModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
+<body class="">
+    <div id="overlay" onClick="closeListModal()" class="hidden left-0 h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]">
     </div>
     <header id="header" class="flex flex-col w-full py-5 text-3xl px-7 ">
         <a href="index.php">
@@ -134,7 +134,7 @@ if (isset($_GET['deleteList'])) {
         <?php } ?>
     </main>
     <!-- Add list modal -->
-    <div id="addListModal" class="fixed bottom-0 bg-[#f9f9fd] w-full rounded-t-xl hidden z-20 flex-col">
+    <div id="addListModal" class="fixed bottom-0 bg-[#f9f9fd] max-w-md w-full rounded-t-xl hidden z-20 flex-col">
         <div class="flex items-center justify-between mt-5 px-7">
             <span class="ml-4 text-xl font-semibold">Voeg item toe</span>
             <span class="mr-5 text-primary">
@@ -143,13 +143,11 @@ if (isset($_GET['deleteList'])) {
                 </svg>
             </span>
         </div>
-        <div class="flex w-full mt-5 mb-8 mx-7">
-            <form action="lists.php" method="post">
-                <input type="text" name="newList" id="newList" placeholder="Typ hier de naam van je lijst" maxlength="55"
-                class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 placeholder:pl-2">
-                <input type="submit" name="submit" value="Add" class="hidden w-0 px-3 py-1 text-sm rounded-md">
-            </form>
-        </div>
+        <form action="lists.php" method="post" class="flex mt-5 mb-8 mx-7">
+            <input type="text" name="newList" id="newList" placeholder="Typ hier de naam van je lijst" maxlength="55"
+            class="w-full px-2 py-2 mb-5 bg-white rounded-full shadow placeholder:pl-2">
+            <input type="submit" name="submit" value="Add" class="hidden w-0 px-3 py-1 text-sm rounded-md">
+        </form>
     </div>
 </body>
 </html>

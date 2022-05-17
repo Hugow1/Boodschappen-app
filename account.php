@@ -23,7 +23,7 @@ require_once './functions.php';
         document.body.appendChild(el);
     </script>
 </head>
-<body class="bg-[#f9f9fd] max-h-screen">
+<body class="">
     <header id="header" class="flex flex-col w-full py-5 text-3xl px-7 ">
         <a href="index.php">
             <span class="mb-3 text-primary">
@@ -43,7 +43,7 @@ require_once './functions.php';
             </div>
         </div>
     </main>
-    <footer id="footer" class="fixed bottom-0 flex items-center justify-end w-full ">
+    <footer id="footer" class="fixed bottom-0 flex items-center justify-end w-full max-w-md ">
         <a href="logout.php" class="flex justify-center w-1/2 py-5 text-xl text-white rounded-tl-full bg-primary">Log uit</a>
     </footer>
 </body>
