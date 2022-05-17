@@ -1,10 +1,12 @@
 <?php
+
+require_once 'environment.php';
+
 //db credentials
-//TODO: store these in env file
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'listItems');
+define('DB_SERVER', $_ENV['db_host']);
+define('DB_USERNAME', $_ENV['db_user']);
+define('DB_PASSWORD', $_ENV['db_pass']);
+define('DB_NAME', $_ENV['db_name']);
 
 //Setup db connection
 $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);

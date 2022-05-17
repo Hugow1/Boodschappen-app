@@ -10,9 +10,9 @@ require_once './functions.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo '<link rel="stylesheet" href="' . auto_version('/styles/output.css') . '" type="text/css">'; ?>
-    <?php echo '<script src="' . auto_version('/scripts/functions.js') . '"></script>'; ?>
-    <link rel="manifest" href="/manifest.json">
+    <?php echo '<link rel="stylesheet" href="' . auto_version('styles/output.css') . '" type="text/css">'; ?>
+    <?php echo '<script src="' . auto_version('scripts/functions.js') . '"></script>'; ?>
+    <?php echo '<link rel="manifest" href="' . auto_version('manifest.json') . '">'; ?>
     <title>Account instellingen</title>
     <link rel="icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -37,10 +37,11 @@ require_once './functions.php';
     <main>
         <div class="flex flex-col w-full px-7">
             <div class="flex flex-col w-full mb-5">
-                <a href="cleanOldItems.php" class="flex items-center w-full px-2 py-2 text-left text-white rounded-full bg-primary">
-                    Delete done items
+                <a href="cleanOldItems.php" class="flex items-center w-full px-2 py-2 pl-4 text-left text-white rounded-full bg-primary">
+                    Verwijder oude afgeronde items
                 </a>
             </div>
+        </div>
     </main>
     <footer id="footer" class="fixed bottom-0 flex items-center justify-end w-full ">
         <a href="logout.php" class="flex justify-center w-1/2 py-5 text-xl text-white rounded-tl-full bg-primary">Log uit</a>

@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>You are offline</title>
-    </head>
-    <body>
-        You need a working network connection.
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<title>Login</title>
+<link rel="stylesheet" href="styles/output.css" type="text/css">
+<script src="scripts/functions.js"></script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<script type="module">
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
+</script></head>
+
+<body class="bg-[#f9f9fd] max-h-screen">
+    <div id="overlay" onclick="closeModal()" class="hidden h-screen w-screen fixed z-10 bg-opacity-80 bg-[#c8c8dd]"></div>
+    <header id="header" class="flex items-center justify-between w-full py-5 pb-0 mt-10 text-3xl px-7">
+        <p class="font-semibold">Je bent offline :(</p>
+    </header>
+    <div class="flex flex-col w-full py-5 px-7">
+        <p>Als je weer online bent, swipe dan terug naar links.</p>
+        <p>Je kan ook <a href="index.php" class="underline underline-offset-1">hier klikken</a></p>
+    </div>
+</body>
+
 </html>

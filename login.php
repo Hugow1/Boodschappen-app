@@ -96,9 +96,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <?php echo '<link rel="stylesheet" href="' . auto_version('/styles/output.css') . '" type="text/css">'; ?>
-    <?php echo '<script src="' . auto_version('/scripts/functions.js') . '"></script>'; ?>
-    <link rel="manifest" href="/manifest.json">
+    <?php echo '<link rel="stylesheet" href="' . auto_version('styles/output.css') . '" type="text/css">'; ?>
+    <?php echo '<script src="' . auto_version('scripts/functions.js') . '"></script>'; ?>
+    <?php echo '<link rel="manifest" href="' . auto_version('manifest.json') . '">'; ?>
     <link rel="icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <script type="module">

@@ -58,9 +58,9 @@ if (isset($_POST['newItem'])) {
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo '<link rel="stylesheet" href="' . auto_version('/styles/output.css') . '" type="text/css">'; ?>
-    <?php echo '<script src="' . auto_version('/scripts/functions.js') . '"></script>'; ?>
-    <link rel="manifest" href="/manifest.json">
+    <?php echo '<link rel="stylesheet" href="' . auto_version('styles/output.css') . '" type="text/css">'; ?>
+    <?php echo '<script src="' . auto_version('scripts/functions.js') . '"></script>'; ?>
+    <?php echo '<link rel="manifest" href="' . auto_version('manifest.json') . '">'; ?>
     <title>Bewerk je lijst</title>
     <link rel="icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">

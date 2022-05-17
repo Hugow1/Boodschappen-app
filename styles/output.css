@@ -1969,6 +1969,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.25rem;
 }
 
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
+.pb-0 {
+  padding-bottom: 0px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2189,6 +2201,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .decoration-wavy {
   -webkit-text-decoration-style: wavy;
           text-decoration-style: wavy;
+}
+
+.underline-offset-1 {
+  text-underline-offset: 1px;
 }
 
 .antialiased {
