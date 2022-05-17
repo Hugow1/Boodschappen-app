@@ -45,3 +45,8 @@ function showList(listId) {
     listArrow.classList.remove("rotate-180");
   }
 }
+
+//Reload the page when clicking the refresh button
+function reloadPage() {
+  location.reload();
+}
