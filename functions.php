@@ -76,6 +76,7 @@ function deleteList($listID, $user_id)
 
 //add query parameters to the url to fix caching issues
 function auto_version($file) {
+    $file = "/" . $file;
     $mtime = filemtime($_SERVER['DOCUMENT_ROOT'] . $file);
     return sprintf("%s?v=%d", $file, $mtime);
 }
