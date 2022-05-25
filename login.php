@@ -64,6 +64,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
 
+                            // Set a cookie with salted user_id and store the id in the db.
+                            $newId = hash_hmac('sha256', $_SESSION["id"], '12345');
+                            setcookie("user_id", $newId, time() + (86400 * 30), "/");
+                            $sql = "UPDATE users SET token = '$newId' WHERE id = '$id'";
+                            mysqli_query($db, $sql);
+
                             // Redirect user to welcome page
                             header("location: index.php");
                         } else{
@@ -122,22 +128,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="flex flex-col">
                 <label class="mb-2 ml-2 text-xl font-bold">Gebruikersnaam</label>
-                <input type="text" name="username" placeholder="Typ hier je gebruikersnaam in" class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <input type="text" name="username" placeholder="Typ hier je gebruikersnaam in" class="bg-white block items-center py-2 px-2 w-full rounded-full shadow mb-5 <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>
             <div class="flex flex-col">
                 <label class="mb-2 ml-2 text-xl font-bold">Wachtwoord</label>
-                <input type="password" name="password" placeholder="Typ hier je wachtwoord in" class="bg-white block items-center py-2 px-2 w-[350px] rounded-full shadow mb-5 <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <input type="password" name="password" placeholder="Typ hier je wachtwoord in" class="bg-white block items-center py-2 px-2 w-full rounded-full shadow mb-5 <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div class="fixed bottom-0 flex items-center justify-between w-full max-w-md font-semibold">
+            <div class="fixed bottom-0 flex items-center justify-between w-full max-w-md font-semibold bg-[#f9f9fd] z-10 -ml-7">
                 <a href="register.php" class="flex justify-center w-1/3 py-5 text-xl text-primary">Registreer</a>
                 <input type="submit" class="flex justify-center w-2/3 py-5 text-xl text-white rounded-tl-full bg-primary" value="Login">
             </div>
         </form>
     </div>
-    <div class="flex flex-col px-7">
-        <h3 class="mt-10 text-xl">Handleiding:</h3>
+    <div class="flex flex-col overflow-scroll px-7 h-[45%]">
+        <h3 class="mt-10 text-xl">Update 25-05-2022</h3>
+        <ul class="list-disc list-inside">
+            <li>Fix dat je niet zo vaak opnieuw hoeft in te loggen.</li>
+            <li>Minder update nodig meldingen (hopelijk) als je de app op je homescreen hebt staan.</li>
+        </ul>
+        <h3 class="mt-6 text-xl">Handleiding:</h3>
         <ol class="list-decimal list-inside">
             <li>Voeg de app toe aan je homescreen.</li>
             <li>Klik op de app in je homescreen.</li>

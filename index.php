@@ -4,6 +4,20 @@ require_once './functions.php';
 // Initialize the session
 session_start();
 
+if (isset($_COOKIE['user_id'])) {
+
+    // If the token of the cookie is found set the settion to logged in
+    if (!isset($_SESSION['loggedin']) || $_SESSION["loggedin"] !== true) {
+        $sql = "SELECT *  FROM `users` WHERE `token` = '8367e82e79ff331ba30d0f8244ab438b756e8cefe5d52ce82c88617dc37b5afc';";
+        $user_id = mysqli_query($db, $sql);
+        foreach ($user_id as $user) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+        }
+    }
+}
+
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
