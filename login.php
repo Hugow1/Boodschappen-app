@@ -4,7 +4,7 @@
 require_once "./functions.php";
 
 // Initialize the session
-session_start();
+// session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -114,10 +114,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </script>
 </head>
 <body class="">
-    <header id="header" class="flex items-center justify-between w-full py-5 mt-10 text-3xl px-7">
+    <header id="header" class="flex justify-between items-center px-7 py-5 mt-10 w-full text-3xl">
         <p class="font-semibold">Inloggen</p>
     </header>
-    <div class="flex flex-col mt-10 px-7">
+    <div class="flex flex-col px-7 mt-10">
 
         <?php
         if(!empty($login_err)){
@@ -137,8 +137,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="fixed bottom-0 flex items-center justify-between w-full max-w-md font-semibold bg-[#f9f9fd] z-10 -ml-7">
-                <a href="register.php" class="flex justify-center w-1/3 py-5 text-xl text-primary">Registreer</a>
-                <input type="submit" class="flex justify-center w-2/3 py-5 text-xl text-white rounded-tl-full bg-primary" value="Login">
+                <a href="register.php" class="flex justify-center py-5 w-1/3 text-xl text-primary">Registreer</a>
+                <input type="submit" class="flex justify-center py-5 w-2/3 text-xl text-white rounded-tl-full bg-primary" value="Login">
             </div>
         </form>
     </div>
