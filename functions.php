@@ -1,12 +1,13 @@
 <?php
 
-require_once 'environment.php';
+// require_once 'environment.php';
 
 //db credentials
-define('DB_SERVER', $_ENV['db_host']);
-define('DB_USERNAME', $_ENV['db_user']);
-define('DB_PASSWORD', $_ENV['db_pass']);
-define('DB_NAME', $_ENV['db_name']);
+// Get database credentials from environment variables
+define('DB_SERVER', getenv('db_host') ?: $_ENV['db_host']);
+define('DB_USERNAME', getenv('db_user') ?: $_ENV['db_user']);
+define('DB_PASSWORD', getenv('db_pass') ?: $_ENV['db_pass']);
+define('DB_NAME', getenv('db_name') ?: $_ENV['db_name']);
 
 //Setup db connection
 $db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
